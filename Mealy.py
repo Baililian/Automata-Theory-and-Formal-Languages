@@ -1,4 +1,3 @@
-
 class MealyState:
     def __init__(self, name):
         self.name = name
@@ -17,9 +16,9 @@ class StateA(MealyState):
     
     def transition(self, input_char):
         if input_char == '0':
-            return StateB(), 'b'  # A→B outputs 'b'
-        else:  # input_char == '1'
-            return StateA(), 'b'  # A→A outputs 'b'
+            return StateB(), 'b'  
+        else: 
+            return StateA(), 'b'  
 
 
 class StateB(MealyState):
@@ -29,9 +28,9 @@ class StateB(MealyState):
     
     def transition(self, input_char):
         if input_char == '0':
-            return StateB(), 'b'  # B→B outputs 'b'
-        else:  # input_char == '1'
-            return StateC(), 'a'  # B→C outputs 'a' ← ONLY 'a' HERE!
+            return StateB(), 'b'  
+        else:  
+            return StateC(), 'a' 
 
 
 class StateC(MealyState):
@@ -41,9 +40,9 @@ class StateC(MealyState):
     
     def transition(self, input_char):
         if input_char == '0':
-            return StateB(), 'b'  # C→B outputs 'b'
-        else:  # input_char == '1'
-            return StateA(), 'b'  # C→A outputs 'b'
+            return StateB(), 'b' 
+        else:  
+            return StateA(), 'b' 
 
 
 class MealyMachine:
