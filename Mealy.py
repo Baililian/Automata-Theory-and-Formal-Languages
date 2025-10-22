@@ -8,7 +8,6 @@ class MealyState:
     def __str__(self):
         return self.name
 
-
 class StateA(MealyState):
     """State A: Initial state"""
     def __init__(self):
@@ -19,7 +18,6 @@ class StateA(MealyState):
             return StateB(), 'b'  
         else: 
             return StateA(), 'b'  
-
 
 class StateB(MealyState):
     """State B: After seeing '0'"""
@@ -32,7 +30,6 @@ class StateB(MealyState):
         else:  
             return StateC(), 'a' 
 
-
 class StateC(MealyState):
     """State C: After detecting '01'"""
     def __init__(self):
@@ -40,10 +37,9 @@ class StateC(MealyState):
     
     def transition(self, input_char):
         if input_char == '0':
-            return StateB(), 'b' 
+            return StateA(), 'b'  
         else:  
-            return StateA(), 'b' 
-
+            return StateC(), 'b'  
 
 class MealyMachine:
     def __init__(self):
@@ -51,12 +47,12 @@ class MealyMachine:
         self.transition_table = {
             'A': {'0': ('B', 'b'), '1': ('A', 'b')},
             'B': {'0': ('B', 'b'), '1': ('C', 'a')},
-            'C': {'0': ('B', 'b'), '1': ('A', 'b')}
+            'C': {'0': ('A', 'b'), '1': ('C', 'b')}  
         }
     
     def show_transition_table(self):
         print("=" * 70)
-        print("MEALY MACHINE TRANSITION TABLE (From Diagram)")
+        print("MEALY MACHINE TRANSITION TABLE (Corrected)")
         print("=" * 70)
         print(f"{'State':<10}{'Input':<10}{'Next State':<15}{'Output':<10}{'Note'}")
         print("-" * 70)
