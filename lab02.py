@@ -34,20 +34,24 @@ class MooreMachine:
 def build_moore_machine():
     moore = MooreMachine('A_A')
     
+    # Create states
     states = [
         State('A_A', 'A'), State('B_B', 'B'), State('C_A', 'A'),
-        State('D_B', 'B'), State('D_C', 'C'), State('C_C', 'C')
+        State('D_B', 'B'), State('D_C', 'C'), State('C_C', 'C'),
+        State('E_C', 'C')  
     ]
     for state in states:
         moore.add_state(state)
     
+    # Add transitions 
     transitions = [
         ('A_A', '0', 'A_A'), ('A_A', '1', 'B_B'),
         ('B_B', '0', 'C_A'), ('B_B', '1', 'D_B'),
         ('C_A', '0', 'D_C'), ('C_A', '1', 'B_B'),
         ('D_B', '0', 'B_B'), ('D_B', '1', 'C_C'),
         ('D_C', '0', 'B_B'), ('D_C', '1', 'C_C'),
-        ('C_C', '0', 'D_C'), ('C_C', '1', 'B_B')
+        ('C_C', '0', 'D_C'), ('C_C', '1', 'B_B'),
+        ('E_C', '0', 'D_C'), ('E_C', '1', 'E_C')  
     ]
     for from_s, inp, to_s in transitions:
         moore.add_transition(from_s, inp, to_s)
